@@ -23,7 +23,7 @@
 <body>
 <main>
   <h1>Küpem Gizlilik Politikası</h1>
-  <p class="muted">Son güncelleme: 10 Ekim 2026</p>
+  <p class="muted">Son güncelleme: 15 Ekim 2026</p>
 
   <p>Küpem, canlı hayvan ilanlarını yayınlanmadan önce belge, satıcı kimliği ve piyasa fiyatına göre değerlendirip
   her ilana 0–100 arası bir Güven Skoru veren bir mobil uygulamadır. Bu sayfa hangi bilgileri neden topladığımızı,
@@ -40,8 +40,17 @@
     <tr><td>İlan bilgileri (tür, ırk, cinsiyet, yaş, kilo, küpe no, il/ilçe, fiyat, açıklama)</td><td>İlanı yayınlamak ve skorlamak</td><td>Yayındaki ilanı görüntüleyen herkes</td></tr>
     <tr><td>Hayvan ve küpe fotoğrafları</td><td>İlanda göstermek</td><td>Yayındaki ilanı görüntüleyen herkes</td></tr>
     <tr><td>Hayvan pasaportu, sağlık raporu / aşı kartı fotoğrafları</td><td>İlanı doğrulamak</td><td>Yalnızca siz ve Küpem'in yetkilendirdiği veteriner hekimler</td></tr>
+    <tr><td>İlan videoları</td><td>İlanda göstermek</td><td>Yayındaki ilanı görüntüleyen herkes</td></tr>
+    <tr><td>Uygulama içi mesajlar</td><td>Alıcı ile satıcının yazışması; dolandırıcılık uyarısı (kapora, IBAN gibi ifadeler otomatik işaretlenir)</td><td>Yalnızca konuşmanın iki tarafı</td></tr>
+    <tr><td>Hikayeler (fotoğraf/video ve kısa yazı)</td><td>24 saat boyunca diğer kullanıcılara göstermek</td><td>Uygulamayı kullanan herkes; 24 saat sonra silinir</td></tr>
+    <tr><td>Satıcı değerlendirmeleri (puan, yorum)</td><td>Satıcının güvenilirliğini göstermek</td><td>Herkes (adınız baş harfiyle kısaltılır)</td></tr>
+    <tr><td>Favoriler, kayıtlı aramalar, engellenen kullanıcılar</td><td>Size özel listeler ve yeni ilan bildirimi</td><td>Yalnızca siz</td></tr>
+    <tr><td>Bildirim belirteci (cihazınıza bildirim göndermek için Google/Expo'nun verdiği kod)</td><td>Mesaj, ilan onayı, fiyat düşüşü ve kayıtlı arama bildirimleri</td><td>Yalnızca bildirim altyapısı</td></tr>
+    <tr><td>İlan görüntülenme sayıları</td><td>İlan sahibine istatistik ve haftalık özet</td><td>Yalnızca ilan sahibi (kimin baktığı gösterilmez)</td></tr>
+    <tr><td>Şikayetler</td><td>Kötüye kullanımı incelemek</td><td>Küpem'in yetkilendirdiği veteriner hekimler</td></tr>
   </table></div>
-  <p>Konumunuzu, rehberinizi, cihaz kimliğinizi toplamıyoruz. Uygulamada reklam, reklam kimliği, analiz veya
+  <p>Konumunuzu ve rehberinizi toplamıyoruz; bildirim belirteci dışında cihaz kimliği tutmuyoruz. Giriş yapmadan bakılan
+  ilanlar, yalnızca o uygulama oturumuna ait geçici bir değerle sayılır. Uygulamada reklam, reklam kimliği, analiz veya
   kullanıcı izleme aracı bulunmaz. Kamera ve galeri yalnızca siz fotoğraf eklemeyi seçtiğinizde kullanılır.</p>
 
   <h2>2. Bilgileri kimlerle paylaşıyoruz</h2>
@@ -50,6 +59,8 @@
   <ul>
     <li><strong>Supabase</strong> (veritabanı, giriş ve dosya depolama) — sunucular Frankfurt, Almanya'dadır.</li>
     <li><strong>Brevo</strong> (giriş kodu e-postalarının gönderimi) — yalnızca e-posta adresiniz iletilir.</li>
+    <li><strong>Google</strong> (Google ile giriş seçerseniz ad ve e-posta; Firebase Cloud Messaging ile bildirim iletimi).</li>
+    <li><strong>Expo</strong> (bildirimlerin cihazınıza iletilmesi ve uygulama güncellemeleri) — bildirim başlığı ve metni iletilir.</li>
   </ul>
   <p>Yasal bir zorunluluk olduğunda (ör. mahkeme kararı) bilgiler yetkili makamlarla paylaşılabilir.</p>
   <p>Bilgileriniz yurt dışındaki (Almanya) sunucularda saklandığından, uygulamayı kullanarak bu aktarıma onay
@@ -68,7 +79,8 @@
   <p><strong>Uygulamadan:</strong> Profilim → <em>Hesabımı sil</em> → <em>Kalıcı olarak sil</em>. Silme işlemi anında gerçekleşir.</p>
   <p><strong>Uygulamaya erişemiyorsanız:</strong> kayıtlı e-posta adresinizden <a href="mailto:emincelayir03@gmail.com?subject=Küpem%20hesap%20silme">emincelayir03@gmail.com</a>
   adresine "Küpem hesap silme" konulu bir e-posta gönderin; hesabınız ve tüm verileriniz en geç 30 gün içinde silinir.</p>
-  <p>Silinen veriler: e-posta adresi, ad soyad, telefon, işletme numarası, tüm ilanlar, fotoğraflar ve belgeler.
+  <p>Silinen veriler: e-posta adresi, ad soyad, telefon, işletme numarası, tüm ilanlar, fotoğraflar, videolar, belgeler,
+  mesajlar, hikayeler, verdiğiniz değerlendirmeler, favoriler, kayıtlı aramalar ve bildirim belirteçleri.
   Veteriner hesabı silindiğinde, verdiği onay/ret kararları ilanlarda kimliği belirtilmeden kalır.</p>
 
   <h2>6. Haklarınız (KVKK)</h2>
