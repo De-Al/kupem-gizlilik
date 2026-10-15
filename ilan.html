@@ -54,7 +54,7 @@
   async function yukle() {
     const kod = new URLSearchParams(location.search).get('kod');
     if (!kod) { ana.innerHTML = '<p class="bos">Bağlantıda ilan kodu yok.</p>'; return; }
-    const alanlar = 'kod,tur,irk,cinsiyet,yas_ay,kg,il,ilce,fiyat,eski_fiyat,aciklama,photos,video,score,seller_name,status';
+    const alanlar = 'kod,tur,irk,cinsiyet,yas_ay,kg,il,ilce,fiyat,eski_fiyat,adet,kurbanlik,hisse_toplam,hisse_bos,aciklama,photos,video,score,seller_name,status';
     const r = await fetch(`${SUPABASE}/rest/v1/listings?select=${alanlar}&kod=eq.${encodeURIComponent(kod.trim().toUpperCase())}`, {
       headers: { apikey: ANAHTAR, Authorization: `Bearer ${ANAHTAR}` },
     });
@@ -65,7 +65,8 @@
     }
     const s = l.score || {};
     const dustu = l.eski_fiyat && Number(l.eski_fiyat) > Number(l.fiyat);
-    document.title = `${l.irk} ${l.cinsiyet === 'erkek' ? 'Erkek' : 'Dişi'} · ${tl(l.fiyat)} · Küpem`;
+    const baslik = `${l.adet > 1 ? l.adet + ' baş ' : ''}${l.irk} ${l.cinsiyet === 'erkek' ? 'Erkek' : 'Dişi'}`;
+    document.title = `${baslik} · ${tl(l.fiyat)} · Küpem`;
     const medya = [...(l.photos || []).map((p) => `<img src="${kac(p)}" alt="Hayvan fotoğrafı" loading="lazy">`),
                    l.video ? `<video src="${kac(l.video)}" controls playsinline preload="metadata"></video>` : ''].join('');
     const bar = (ad, v, a) => `<div><div class="satir"><span>${ad} <small class="alt">${a}</small></span><span>${v}/100</span></div>
@@ -74,10 +75,15 @@
       ${medya ? `<div class="galeri">${medya}</div>` : ''}
       <div class="icerik">
         <div>
-          <h1>${kac(l.irk)} ${l.cinsiyet === 'erkek' ? 'Erkek' : 'Dişi'}</h1>
+          <h1>${kac(baslik)}</h1>
           <div><span class="fiyat">${tl(l.fiyat)}</span>${dustu ? `<span class="eski">${tl(l.eski_fiyat)}</span><span class="dusus">↓ %${Math.round((1 - l.fiyat / l.eski_fiyat) * 100)}</span>` : ''}</div>
-          <div class="alt">${TUR[l.tur] || ''} · ${l.kg} kg · ${l.yas_ay} aylık · ${kac(l.il)}${l.ilce ? ', ' + kac(l.ilce) : ''}</div>
+          <div class="alt">${TUR[l.tur] || ''} · ${l.adet > 1 ? 'ortalama ' : ''}${l.kg} kg · ${l.yas_ay} aylık · ${kac(l.il)}${l.ilce ? ', ' + kac(l.ilce) : ''}</div>
+          ${l.adet > 1 ? `<div><b>${l.adet} baş · baş başı ${tl(Math.round(l.fiyat / l.adet))}</b></div>` : ''}
+          ${l.kurbanlik ? '<div class="dusus" style="color:var(--green)">🐂 Kurbanlık</div>' : ''}
         </div>
+        ${l.hisse_toplam ? `<div class="kart"><div class="bolum">Hisseli kurbanlık</div>
+          <div><b>${l.hisse_bos ? l.hisse_bos + ' hisse boş (toplam ' + l.hisse_toplam + ')' : 'Tüm hisseler doldu'}</b></div>
+          <div class="fiyat" style="font-size:20px">Hisse fiyatı: ${tl(Math.round(l.fiyat / l.hisse_toplam))}</div></div>` : ''}
         <div class="kart">
           <div class="skor">
             <div class="rozet" style="background:${renk(s.toplam)}"><div><b>${s.toplam ?? '–'}</b><small>Güven Skoru</small></div></div>
